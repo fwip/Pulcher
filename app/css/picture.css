@@ -1,5 +1,5 @@
 .piccontainer {
-  background-color: #ddd;
+  background-color: #ddf;
   border: 1px solid black;
   padding: 10px;
 }
@@ -9,6 +9,20 @@
     float: left;
     margin: 10px;
     text-align: center;
+    width: 300px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.tag {
+  text-color: gray;
+}
+
+.tag:hover{
+  background-color: gray;
+  color: white;
 }
 
 .clear {

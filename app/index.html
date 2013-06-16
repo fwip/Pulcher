@@ -9,15 +9,23 @@
   </head>
   <body>
 
-    <p> Some stuffs gonna go here </p>
+    <p> Cheese repository</p>
 
     <div class="piccontainer" ng-controller="PictureDisplayCtrl">
 
-      <div class="pic" ng-repeat="picture in pictures">
+      <div class="search">
+        Search tags: <input ng-model="query">
+      </div>
 
+      <div class="pic" ng-repeat="picture in pictures | filter:query">
+
+        <span class="title"> {{picture.name}} </span>
+        <br>
         <img ng-src="{{picture.url}}" > </img>
         <br>
-        {{picture.name}} 
+        <span class="tag" ng-repeat="tag in picture.tags">
+          #{{tag.name}}
+        </span>
       </div>
 
       <div class="clear"></div>
