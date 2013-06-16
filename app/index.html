@@ -21,6 +21,10 @@
 
       </div>
 
+      <div class="newpic">
+          Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
+      </div>
+
       <div class="pic" ng-repeat="picture in pictures | filter:query">
 
         <span class="title"> {{picture.name}} </span>

@@ -14,4 +14,8 @@ function PictureDisplayCtrl($scope, $http){
   $scope.loadFromStorage = function (){
     $scope.pictures = JSON.parse( localStorage.getItem('everything'));
   }
+
+  $scope.addPic = function (url){
+    $scope.pictures.push( {'url': url} );
+  }
 };
