@@ -6,4 +6,12 @@ function PictureDisplayCtrl($scope, $http){
   $scope.setQuery = function (query){
     $scope.query = query;
   };
+
+  $scope.saveToStorage = function (){
+    localStorage.setItem('everything', JSON.stringify( $scope.pictures));
+  }
+
+  $scope.loadFromStorage = function (){
+    $scope.pictures = JSON.parse( localStorage.getItem('everything'));
+  }
 };

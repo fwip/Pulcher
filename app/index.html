@@ -13,8 +13,12 @@
 
     <div class="piccontainer" ng-controller="PictureDisplayCtrl">
 
+        <button ng-click="loadToStorage()"> Load </button>
+        <button ng-click="saveToStorage()"> Save </button>
       <div class="search">
         Search tags: <input ng-model="query">
+        <button ng-click="setQuery('')"> Clear </button>
+
       </div>
 
       <div class="pic" ng-repeat="picture in pictures | filter:query">
