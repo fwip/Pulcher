@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <p> Cheese repository</p>
+    <p> Pulcher repository </p>
 
     <div class="piccontainer" ng-controller="PictureDisplayCtrl">
 
@@ -23,7 +23,7 @@
         <br>
         <img ng-src="{{picture.url}}" > </img>
         <br>
-        <span class="tag" ng-repeat="tag in picture.tags">
+        <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
           #{{tag.name}}
         </span>
       </div>

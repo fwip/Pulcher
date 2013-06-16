@@ -12,6 +12,10 @@
     width: 300px;
 }
 
+.pic img {
+  width: 300px;
+}
+
 .title {
   font-weight: bold;
 }
