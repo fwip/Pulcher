@@ -1,0 +1,16 @@
+.piccontainer {
+  background-color: #ddd;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.pic {
+    background-color: white;
+    float: left;
+    margin: 10px;
+    text-align: center;
+}
+
+.clear {
+  clear: both;
+}

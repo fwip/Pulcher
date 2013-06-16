@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title> Pulcher </title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="js/picture.js"></script>
+    <link rel="stylesheet" href="css/picture.css">
+
+  </head>
+  <body>
+
+    <p> Some stuffs gonna go here </p>
+
+    <div class="piccontainer" ng-controller="PictureDisplayCtrl">
+
+      <div class="pic" ng-repeat="picture in pictures">
+
+        <img ng-src="{{picture.url}}" > </img>
+        <br>
+        {{picture.name}} 
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+  </body>
+</html>
