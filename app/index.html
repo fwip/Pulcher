@@ -16,30 +16,30 @@
     Contains {{pictures.length || "no"}} pictures.
     <br>
 
-      <button ng-click="loadPictures()"> LoadFromDB </button>
-      <div class="search">
+    <button ng-click="loadPictures()"> LoadFromDB </button>
+    <div class="search">
         Search tags: <input ng-model="query">
         <button ng-click="setQuery('')"> Clear </button>
 
-      </div>
+    </div>
 
-      <div class="newpic">
+    <div class="newpic">
         Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
-      </div>
+    </div>
 
-      <div class="pic" ng-repeat="picture in pictures | filter:query">
+    <div class="pic" ng-repeat="picture in pictures | filter:query">
 
         <span class="title"> {{picture.name}} </span>
         <br>
         <img ng-src="{{picture.url}}" > </img>
         <br>
         <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
-          #{{tag.name}}
+            #{{tag.name}}
         </span>
-      </div>
-
-      <div class="clear"></div>
     </div>
+
+    <div class="clear"></div>
+</div>
 
   </body>
 </html>

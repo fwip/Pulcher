@@ -1,7 +1,9 @@
 function PictureDisplayCtrl($scope, $http){
 
   $scope.addPic = function (url){
-    $scope.pictures.push( {'url': url} );
+    var pic = {'url': url};
+    $scope.pictures.push( pic );
+    dbcontrol.addPicture(pic);
   }
 
   $scope.loadPictures = function(){
