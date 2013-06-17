@@ -12,9 +12,13 @@
     <p> Pulcher repository </p>
 
     <div class="piccontainer" ng-controller="PictureDisplayCtrl">
+    Contains {{pictures.length || "no"}} pictures.
+    <br>
 
-        <button ng-click="loadToStorage()"> Load </button>
-        <button ng-click="saveToStorage()"> Save </button>
+      <button ng-click="loadToStorage()"> Load </button>
+      <button ng-click="saveToStorage()"> Save </button>
+      <button ng-click="importPicturesToDB()"> Import </button>
+      <button ng-click="loadPicturesFromDB()"> LoadFromDB </button>
       <div class="search">
         Search tags: <input ng-model="query">
         <button ng-click="setQuery('')"> Clear </button>
@@ -22,7 +26,7 @@
       </div>
 
       <div class="newpic">
-          Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
+        Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
       </div>
 
       <div class="pic" ng-repeat="picture in pictures | filter:query">
