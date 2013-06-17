@@ -6,6 +6,10 @@ function PictureDisplayCtrl($scope, $http){
     dbcontrol.addPicture(pic);
   }
 
+  $scope.setQuery = function(query){
+    $scope.query = query;
+  }
+
   $scope.loadPictures = function(){
     dbcontrol.getPictures( function(pictures){
       $scope.pictures = pictures;
