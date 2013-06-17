@@ -3,6 +3,7 @@
   <head>
     <title> Pulcher </title>
     <script src="lib/angular/angular.js"></script>
+    <script src="js/db.js"></script>
     <script src="js/picture.js"></script>
     <link rel="stylesheet" href="css/picture.css">
 
@@ -15,10 +16,7 @@
     Contains {{pictures.length || "no"}} pictures.
     <br>
 
-      <button ng-click="loadToStorage()"> Load </button>
-      <button ng-click="saveToStorage()"> Save </button>
-      <button ng-click="importPicturesToDB()"> Import </button>
-      <button ng-click="loadPicturesFromDB()"> LoadFromDB </button>
+      <button ng-click="loadPictures()"> LoadFromDB </button>
       <div class="search">
         Search tags: <input ng-model="query">
         <button ng-click="setQuery('')"> Clear </button>
