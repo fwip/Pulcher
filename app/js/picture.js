@@ -17,5 +17,6 @@ function PictureDisplayCtrl($scope, $http){
     })
   }
 
-  //$scope.loadPictures();
+  dbcontrol.init.onsuccess = $scope.loadPictures;
+  dbcontrol.init();
 };

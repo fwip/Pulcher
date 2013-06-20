@@ -1,5 +1,15 @@
 var dbcontrol = {};
+dbcontrol.initiated = false;
 dbcontrol.init = function(){
+
+  if (dbcontrol.initiated){
+    if (dbcontrol.init.onsuccess){
+      dbcontrol.init.onsuccess();
+    }
+    return;
+  }
+  dbcontrol.initiated = true;
+
   // Set up indexedDB.
   window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
   window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
@@ -17,6 +27,10 @@ dbcontrol.init = function(){
     dbcontrol.db = request.result;
     dbcontrol.db.onerror = function(event){
       alert("DB Error! " + event.target.errorCode);
+    }
+
+    if (dbcontrol.init.onsuccess){
+      dbcontrol.init.onsuccess();
     }
   }
 
@@ -54,13 +68,10 @@ dbcontrol.getPictures = function (callback){
   var promise = objectStore.openCursor().onsuccess = function(event) {
     var cursor = event.target.result;
     if (cursor) {
-      console.log("Pushing " + JSON.stringify(cursor.value));
       pictures.push(cursor.value);
       cursor.continue();
     }
     else {
-      //$scope.pictures = pictures;
-      //$scope.$apply();
       callback(pictures);
     }
 
@@ -73,5 +84,3 @@ dbcontrol.addPicture = function(picture){
   objectStore = transaction.objectStore("pictures");
   objectStore.add(picture);
 }
-
-dbcontrol.init();
