@@ -17,6 +17,11 @@ function PictureDisplayCtrl($scope, $http){
     })
   }
 
+  $scope.deletePic = function(picture){
+    dbcontrol.deletePicture( picture );
+    $scope.pictures.splice( $scope.pictures.indexOf(picture), 1);
+  }
+
   dbcontrol.init.onsuccess = $scope.loadPictures;
   dbcontrol.init();
 };

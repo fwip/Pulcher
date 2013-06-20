@@ -26,19 +26,28 @@
         Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
     </div>
 
-    <div class="pic" ng-repeat="picture in pictures | filter:query">
+    <div class="pic"
+      ng-repeat="picture in pictures | filter:query"
+      ng-mouseenter="picture.hovering = true"
+      ng-mouseleave="picture.hovering = false"
+      >
 
-        <span class="title"> {{picture.name}} </span>
-        <br>
-        <img ng-src="{{picture.url}}" > </img>
-        <br>
-        <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
-            #{{tag.name}}
-        </span>
+      <span class="title"> {{picture.name}} </span>
+      <br>
+      <img ng-src="{{picture.url}}"
+      <br>
+      <button
+        ng-show="picture.hovering"
+        ng-click="deletePic(picture)" >
+        Delete
+      </button>
+      <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
+        #{{tag.name}}
+      </span>
     </div>
 
     <div class="clear"></div>
-</div>
+  </div>
 
-  </body>
+</body>
 </html>

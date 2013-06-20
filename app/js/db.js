@@ -84,3 +84,10 @@ dbcontrol.addPicture = function(picture){
   objectStore = transaction.objectStore("pictures");
   objectStore.add(picture);
 }
+
+dbcontrol.deletePicture = function(picture){
+  var transaction = dbcontrol.db.transaction(["pictures"], "readwrite");
+
+  objectStore = transaction.objectStore("pictures");
+  objectStore.delete(picture.url);
+}
