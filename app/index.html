@@ -34,7 +34,10 @@
 
       <img ng-src="{{picture.url}}">
       <br>
-        <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
+      <span class="tag"
+        ng-repeat="tag in picture.tags"
+        ng-click="removeTagFromPicture(tag.name, picture)"
+        >
           #{{tag.name}}
         </span>
         <br>
