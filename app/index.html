@@ -32,18 +32,22 @@
       ng-mouseleave="picture.hovering = false"
       >
 
-      <span class="title"> {{picture.name}} </span>
+      <img ng-src="{{picture.url}}">
       <br>
-      <img ng-src="{{picture.url}}"
-      <br>
+        <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
+          #{{tag.name}}
+        </span>
+        <br>
+        <input
+        ng-model="picture.newtag"
+        ng-change="checkForNewTags(picture)"
+        placeholder="new tags"
+        >
       <button
-        ng-show="picture.hovering"
         ng-click="deletePic(picture)" >
-        Delete
+        Delete Pic
       </button>
-      <span class="tag" ng-repeat="tag in picture.tags" ng-click="setQuery(tag.name)">
-        #{{tag.name}}
-      </span>
+
     </div>
 
     <div class="clear"></div>
