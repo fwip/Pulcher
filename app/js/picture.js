@@ -23,9 +23,30 @@ function PictureDisplayCtrl($scope, $http){
   }
 
   $scope.addTagToPicture = function(tag, picture){
-    tag = {'name': tag.trim()};
-    if (tag.name.length > 0 && picture.tags.indexOf(tag) < 0){
-      picture.tags.push(tag);
+    tag = tag.trim();
+    for (var i in picture.tags){
+      if (picture.tags[i].name == tag){
+        return;
+      }
+    }
+    if (tag.length > 0){
+      picture.tags.push({'name': tag});
+      dbcontrol.updatePicture(picture);
+    }
+  }
+
+  $scope.removeTagFromPicture = function(tag, picture){
+    tag = tag.trim();
+    var index = -1;
+    for (var i in picture.tags){
+      if (picture.tags[i].name == tag){
+        index = i;
+        break;
+      }
+    }
+
+    if (index >= 0){
+      picture.tags.splice(index, 1);
       dbcontrol.updatePicture(picture);
     }
   }
