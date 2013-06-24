@@ -1,9 +1,11 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="pulcher">
   <head>
     <title> Pulcher </title>
     <script src="lib/angular/angular.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/db.js"></script>
+    <script src="components/angular-indexedDB/src/indexeddb.js"></script>
     <script src="js/picture.js"></script>
     <link rel="stylesheet" href="css/picture.css">
 
@@ -17,13 +19,13 @@
     <br>
 
     <div class="search">
-        Search tags: <input ng-model="query">
+        <input ng-model="query" placeholder="Search tags">
         <button ng-click="setQuery('')"> Clear </button>
-
     </div>
 
     <div class="newpic">
-        Add pic: <input ng-model="putativepic"> <button ng-click="addPic(putativepic)"> Add </button>
+        <input ng-model="putativepic" placeholder="New Pic URL">
+        <button ng-click="addPic(putativepic)"> Add </button>
     </div>
 
     <div class="pic"

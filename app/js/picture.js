@@ -1,9 +1,9 @@
-function PictureDisplayCtrl($scope, $http){
+function PictureDisplayCtrl($scope, $http, $indexedDB){
 
   $scope.addPic = function (url){
     var pic = {'url': url, 'tags': []};
     $scope.pictures.push( pic );
-    dbcontrol.addPicture(pic);
+    $indexedDB.objectStore('pictures').insert(pic);
   }
 
   $scope.setQuery = function(query){
@@ -11,15 +11,17 @@ function PictureDisplayCtrl($scope, $http){
   }
 
   $scope.loadPictures = function(){
-    dbcontrol.getPictures( function(pictures){
-      $scope.pictures = pictures;
-      $scope.$apply();
-    })
+    var promise = $indexedDB.objectStore('pictures').getAll().then(function (results){
+      //console.log('loading...');
+      $scope.pictures = results;
+    });
+    console.log(promise);
   }
 
   $scope.deletePic = function(picture){
-    dbcontrol.deletePicture( picture );
     $scope.pictures.splice( $scope.pictures.indexOf(picture), 1);
+    console.log(picture);
+    $indexedDB.objectStore('pictures').delete( picture.url );
   }
 
   $scope.addTagToPicture = function(tag, picture){
@@ -31,7 +33,7 @@ function PictureDisplayCtrl($scope, $http){
     }
     if (tag.length > 0){
       picture.tags.push({'name': tag});
-      dbcontrol.updatePicture(picture);
+      $indexedDB.objectStore('pictures').upsert(picture);
     }
   }
 
@@ -47,7 +49,7 @@ function PictureDisplayCtrl($scope, $http){
 
     if (index >= 0){
       picture.tags.splice(index, 1);
-      dbcontrol.updatePicture(picture);
+      $indexedDB.objectStore('pictures').upsert(picture);
     }
   }
 
@@ -65,6 +67,5 @@ function PictureDisplayCtrl($scope, $http){
     }
   }
 
-  dbcontrol.init.onsuccess = $scope.loadPictures;
-  dbcontrol.init();
+  $scope.loadPictures();
 };

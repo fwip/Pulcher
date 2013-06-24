@@ -1,0 +1,7 @@
+{
+  "name": "pulcher",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-indexedDB": "git@github.com:boda2004/angular-indexedDB.git"
+  }
+}

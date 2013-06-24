@@ -1,0 +1,9 @@
+{
+  "name": "angular-indexedDB",
+  "version": "0.0.0",
+  "commit": "228f5b9107b941b2ce5165fb4447c06b86cf63e5",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:boda2004/angular-indexedDB.git"
+  }
+}
