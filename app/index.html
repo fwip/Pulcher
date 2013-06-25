@@ -4,7 +4,6 @@
     <title> Pulcher </title>
     <script src="lib/angular/angular.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/db.js"></script>
     <script src="components/angular-indexedDB/src/indexeddb.js"></script>
     <script src="js/picture.js"></script>
     <link rel="stylesheet" href="css/picture.css">
@@ -16,6 +15,7 @@
 
     <div class="piccontainer" ng-controller="PictureDisplayCtrl">
     Contains {{pictures.length || "no"}} pictures.
+    <button ng-click="loadPictures()">Load from DB</button>
     <br>
 
     <div class="search">

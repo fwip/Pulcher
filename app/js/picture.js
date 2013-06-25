@@ -11,8 +11,10 @@ function PictureDisplayCtrl($scope, $http, $indexedDB){
   }
 
   $scope.loadPictures = function(){
-    var promise = $indexedDB.objectStore('pictures').getAll().then(function (results){
-      //console.log('loading...');
+    var picstore = $indexedDB.objectStore('pictures');
+    console.log("Initiating picture loading procedure (so fancy)");
+    var promise =  picstore.getAll().then(function (results){
+      console.log('storing DB results into pictures...');
       $scope.pictures = results;
     });
     console.log(promise);
@@ -67,5 +69,4 @@ function PictureDisplayCtrl($scope, $http, $indexedDB){
     }
   }
 
-  $scope.loadPictures();
 };
